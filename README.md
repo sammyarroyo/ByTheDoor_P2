@@ -20,3 +20,11 @@ with open('new_CF4_averages.tsv', 'w') as new_file:
         parser.add_argument('filename')
         args = parser.parse_args()
         working_file = open(args.filename)
+
+#Read the working file line by line. If line starts with 'A' or 'X', split the line by tabs into
+#an array. Set the values in columns 2-5 as the variable "FPKM list", and make this variable a float.
+                for line in working_file:
+                if line.startswith('A') or line.startswith('X'):
+                        line = line.strip()
+                        tablist = numpy.array(line.split('\t'))
+                        FPKMlist = (tablist[1:5].astype(numpy.float))
