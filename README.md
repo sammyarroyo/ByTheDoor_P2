@@ -28,3 +28,11 @@ with open('new_CF4_averages.tsv', 'w') as new_file:
                         line = line.strip()
                         tablist = numpy.array(line.split('\t'))
                         FPKMlist = (tablist[1:5].astype(numpy.float))
+                        
+#Take the average of the values in the FPKM list. Convert these values to strings,
+#print the values in the file opened at the start of the script, with a new line at the
+#end of each line
+                        averages = numpy.mean(FPKMlist, dtype=numpy.float64)
+                        averages_to_print = str(averages)
+                        new_file.write(averages_to_print + "\n")
+
